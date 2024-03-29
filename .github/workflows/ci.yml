@@ -1,8 +1,8 @@
 name: 'Backend CI/CD 🚀'
 on:
   push:
-    branches:
-      - 'main'
+    # branches:
+    #   - 'main'
     tags:
       - 'v*'
   pull_request:
