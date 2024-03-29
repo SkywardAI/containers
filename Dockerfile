@@ -1,18 +1,13 @@
-# Pull official 3.11.0-slim Python Docker image
-FROM --platform=linux/amd64 python:3.11.0-slim
+FROM python:3.11.8-slim
 
 # Set the working directory
 WORKDIR /app
 
-# Set up Python behaviour
+# make Python avoid to write .pyc files on the import of source modules 
 ENV PYTHONDONTWRITEBYTECODE 1
+# the stdout and stderr streams are sent straight to terminal (e.g. your container log) without being first buffered and that you can see the output of your application (e.g. django logs) in real tim
 ENV PYTHONUNBUFFERED 1
 
-# Install system dependencies
-RUN apt-get update \
-  && apt-get -y install netcat-traditional gcc postgresql \
-  && apt-get clean
-
-# Install Python dependencies
-COPY ./requirements.txt ./
-RUN pip3 install -r requirements.txt
+COPY requirements.txt /tmp/pip-tmp/
+RUN pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
+   && rm -rf /tmp/pip-tmp
