@@ -1,7 +1,11 @@
 FROM python:3.11.8-slim
 
-# Set the working directory
-WORKDIR /app
+# Install system dependencies
+# netcat for nc command
+# If necessary gcc postgresql
+RUN apt-get update \
+  && apt-get -y install netcat-traditional \
+  && apt-get clean
 
 # make Python avoid to write .pyc files on the import of source modules 
 ENV PYTHONDONTWRITEBYTECODE 1
