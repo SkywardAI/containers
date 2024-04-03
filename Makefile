@@ -19,3 +19,7 @@ plugin:
 .PHONY: expo
 expo:
 	@poetry export -f requirements.txt --output requirements.txt
+
+.PHONY: show
+show:
+	@poetry show ${name}
