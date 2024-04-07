@@ -8,6 +8,10 @@ poetry:
 	@pipx install poetry==1.8.2
 
 
+.PHONY: lock
+lock:
+	@poetry lock
+
 .PHONY: install
 install:
 	@poetry install --no-root -vvv
