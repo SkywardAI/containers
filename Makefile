@@ -27,3 +27,7 @@ expo:
 .PHONY: show
 show:
 	@poetry show ${name}
+
+.PHONY: update
+update:
+	@poetry update
