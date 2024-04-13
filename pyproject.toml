@@ -7,7 +7,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
-kimchima = "0.4.1"
+kimchima = "0.4.4"
 
 
 [build-system]
