@@ -17,5 +17,3 @@ COPY requirements.txt /tmp/pip-tmp/
 RUN pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
    && rm -rf /tmp/pip-tmp
 
-
-RUN pip --disable-pip-version-check --no-cache-dir install -r https://raw.githubusercontent.com/SkywardAI/chat-backend/main/backend/requirements.txt
