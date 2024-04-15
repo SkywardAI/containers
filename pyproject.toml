@@ -7,7 +7,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
-kimchima = "0.4.4"
+kimchima = "0.4.5"
 alembic = "1.13.1"
 argon2-cffi = "23.1.0"
 asgi-lifespan = "2.1.0"

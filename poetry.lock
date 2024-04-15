@@ -1274,13 +1274,13 @@ i18n = ["Babel (>=2.7)"]
 
 [[package]]
 name = "kimchima"
-version = "0.4.4"
+version = "0.4.5"
 description = "The collections of tools for ML model development."
 optional = false
 python-versions = "<4.0,>=3.11"
 files = [
-    {file = "kimchima-0.4.4-py3-none-any.whl", hash = "sha256:2328fbc8cb8759483ae48f186d21bb71b64114d7dae50710a1a000192905f517"},
-    {file = "kimchima-0.4.4.tar.gz", hash = "sha256:c5ceec1b9d9415d65a375ba6742fcae963c62c874f1c295f7cf7b0666727b7af"},
+    {file = "kimchima-0.4.5-py3-none-any.whl", hash = "sha256:90deb86624dfbdb2fa53d79769478303fabebdf3e64320fcd4cc80a3a4b95be5"},
+    {file = "kimchima-0.4.5.tar.gz", hash = "sha256:8af2d0069b263e1cc7097ace62b5e658e7487b85dac645f775ae0aeb857ac2af"},
 ]
 
 [package.dependencies]
@@ -3577,4 +3577,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "b4c49191965b2fc3aa57119f1313e0b7e09a00548c0430d80291c540ed140900"
+content-hash = "d22616b8e29a244bc4ae5ef06b62fbac1366cd7544400e4a64025093372f90b7"
