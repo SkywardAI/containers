@@ -1,4 +1,4 @@
-FROM python:3.11.8-slim
+FROM python:3.12.4-slim
 
 # Install system dependencies
 # netcat for nc command
