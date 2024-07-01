@@ -27,48 +27,44 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # - name: Set up QEMU
-      #   uses: docker/setup-qemu-action@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
 
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       # # https://github.com/jlumbroso/free-disk-space/tree/54081f138730dfa15788a46383842cd2f914a1be#example
-      # - name: Free Disk Space (Ubuntu)
-      #   uses: jlumbroso/free-disk-space@main
-      #   with:
-      #     # this might remove tools that are actually needed,
-      #     # if set to "true" but frees about 6 GB
-      #     tool-cache: false
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
 
-      #     # all of these default to true, but feel free to set to
-      #     # "false" if necessary for your workflow
-      #     android: true
-      #     dotnet: true
-      #     haskell: true
-      #     large-packages: true
-      #     docker-images: true
-      #     swap-storage: true
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
 
       - name: Get tag name
         id: tag
         shell: bash
         run: |
           echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
-
-      - name: Print tag name
-        run: |
-          echo ${{ env.TAG }}
         
-      # - name: Release Docker image
-      #   if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/') && success()
-      #   uses: docker/build-push-action@v4
-      #   with:
-      #     context: .
-      #     push: false
-      #     platforms: ${{ matrix.config.platforms }}
-      #     tags: "${{ secrets.DOCKER_REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{ env.TAG }}"
-      #     file: ${{ matrix.config.dockerfile }}
+      - name: Release Docker image
+        if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/') && success()
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          platforms: ${{ matrix.config.platforms }}
+          tags: "${{ secrets.DOCKER_REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{ env.TAG }}"
+          file: ${{ matrix.config.dockerfile }}
         # run: |
         #   docker build -t ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.IMAGE_NAME }}:${GITHUB_REF/refs\/tags\//} .
         #   docker push ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.IMAGE_NAME }}:${GITHUB_REF/refs\/tags\//}
